@@ -1,7 +1,6 @@
 package com.groupone.movierepobackend.data.models;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
