@@ -1,14 +1,21 @@
 package com.groupone.movierepobackend.data.models;
 
-import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToMany;
+import javax.persistence.Column;
+
+import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
 public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
