@@ -16,6 +16,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Setter
+@Getter
 public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
