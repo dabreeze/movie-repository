@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository <Movie, Long>{
-//    Optional<Movie> findMovieByMovieName(String movieName);
+//    Optional<Movie> findMovieByTitle(String title);
 }
