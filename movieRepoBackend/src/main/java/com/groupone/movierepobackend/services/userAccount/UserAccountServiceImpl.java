@@ -29,6 +29,7 @@ public class UserAccountServiceImpl implements UserAccountService{
         newUser.setFirstName(requestDto.getFirstName());
         newUser.setLastName(requestDto.getLastName());
         newUser.setEmail(requestDto.getEmail());
+        newUser.setPassword(requestDto.getPassword());
 
         //save newly created user
         userAccountRepository.save(newUser);
