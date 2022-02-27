@@ -8,6 +8,7 @@ import com.groupone.movierepobackend.web.exceptions.UserAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,6 +39,7 @@ public class UserAccountServiceImpl implements UserAccountService{
         return buildResponse(newUser);
     }
 
+
     private UserAccountResponseDto buildResponse(UserAccount userAccount){
         return UserAccountResponseDto.builder()
                 .firstName(userAccount.getFirstName())
@@ -45,4 +47,11 @@ public class UserAccountServiceImpl implements UserAccountService{
                 .email(userAccount.getEmail())
                 .build();
     }
+
+    @Override
+    public List<UserAccount> getAllUsers() {
+        return userAccountRepository.findAll();
+    }
 }
+
+
