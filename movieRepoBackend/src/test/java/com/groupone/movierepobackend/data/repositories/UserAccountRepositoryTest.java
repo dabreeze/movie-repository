@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +45,13 @@ class UserAccountRepositoryTest {
 
         log.info("Account created -> :: {}", newUser);
 
+    }
+
+    @Test
+    @DisplayName("Find all users in repository test")
+    void findAllUsersTest(){
+        List<UserAccount> accountList = userAccountRepository.findAll();
+        assertThat(accountList).isNotNull();
+        assertThat(accountList.size()).isEqualTo(8);
     }
 }
