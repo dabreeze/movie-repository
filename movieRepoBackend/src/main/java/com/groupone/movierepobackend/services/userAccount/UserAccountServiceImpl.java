@@ -52,6 +52,19 @@ public class UserAccountServiceImpl implements UserAccountService{
     public List<UserAccount> getAllUsers() {
         return userAccountRepository.findAll();
     }
+
+    @Override
+    public UserAccount findUserById(Long userId) throws UserAccountException {
+        if (userId == null){
+            throw new IllegalArgumentException("User Id cannot be null");
+        }
+
+        Optional<UserAccount> userAccountQuery = userAccountRepository.findById(userId);
+        if (userAccountQuery.isPresent()){
+            return userAccountQuery.get();
+        }
+        throw new UserAccountException("User Account with ID:"+ userId + ": does not exist");
+    }
 }
 
 
