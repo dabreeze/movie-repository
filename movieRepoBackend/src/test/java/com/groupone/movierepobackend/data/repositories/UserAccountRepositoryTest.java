@@ -54,4 +54,16 @@ class UserAccountRepositoryTest {
         assertThat(accountList).isNotNull();
         assertThat(accountList.size()).isEqualTo(8);
     }
+
+    @Test
+    @DisplayName("Find a single user test")
+    void findUserByIdTest(){
+        UserAccount userAccount = userAccountRepository.findById(2L).orElse(null);
+        assertThat(userAccount).isNotNull();
+        assertThat(userAccount.getId()).isEqualTo(2L);
+        assertThat(userAccount.getFirstName()).isEqualTo("Emma");
+        assertThat(userAccount.getLastName()).isEqualTo("Frontend");
+        assertThat(userAccount.getPassword()).isEqualTo("123456");
+//        assertThat(userAccount.getPlaylists().size()).isEqualTo(1);
+    }
 }
