@@ -71,4 +71,11 @@ class UserAccountServiceImplTest {
 
 
     }
+
+    @Test
+    @DisplayName("Test to find a user by Id")
+    void findUserByIdTest(){
+        UserAccount userAccount = userAccountRepository.findById(2L).orElse(null);
+        assertThat(userAccount.getId()).isEqualTo(2L);
+    }
 }
