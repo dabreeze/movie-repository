@@ -4,12 +4,7 @@ package com.groupone.movierepobackend.data.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import javax.persistence.Column;
+import javax.persistence.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
@@ -30,6 +25,7 @@ public class UserAccount {
 
     @OneToMany
     private List<Playlist> playlists;
+
     @Column(unique = true, nullable = false)
     private String email;
     @CreationTimestamp
