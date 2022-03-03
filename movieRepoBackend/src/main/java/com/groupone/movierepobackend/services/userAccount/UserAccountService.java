@@ -12,6 +12,6 @@ public interface UserAccountService {
 
     UserAccountResponseDto createMovieUser (UserAccountRequestDto requestDto) throws UserAccountException;
     List<UserAccount> getAllUsers();
-
+    UserAccount findUserById(Long userId) throws UserAccountException;
 
 }
