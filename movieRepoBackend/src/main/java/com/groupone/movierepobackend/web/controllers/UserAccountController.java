@@ -35,4 +35,14 @@ public class UserAccountController {
         List<UserAccount> userAccounts = userAccountService.getAllUsers();
         return ResponseEntity.ok().body(userAccounts);
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> findUserById(@PathVariable Long userId) throws UserAccountException {
+        try {
+            UserAccount account = userAccountService.findUserById(userId);
+            return ResponseEntity.ok().body(account);
+        } catch (UserAccountException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
 }
