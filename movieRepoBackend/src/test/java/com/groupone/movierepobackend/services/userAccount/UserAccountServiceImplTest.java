@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,5 +49,33 @@ class UserAccountServiceImplTest {
 //        assertThat(newUserAccount.getLastName()).isEqualTo("Akin");
         log.info("New User Created -> :: {}", newUserAccount);
 
+    }
+
+    @Test
+    @DisplayName("Find all users test")
+    void getAllUsersTest() throws UserAccountException {
+        List<UserAccount> accounts = userAccountService.getAllUsers();
+        assertThat(accounts).isNotNull();
+
+        //create another user
+        UserAccountRequestDto userAccountRequestDto = new UserAccountRequestDto();
+        userAccountRequestDto.setFirstName("Jane");
+        userAccountRequestDto.setLastName("Doe");
+        userAccountRequestDto.setEmail("janeDoe@gmail.com");
+        userAccountRequestDto.setPassword("11551");
+
+        UserAccountResponseDto myUserAccount = userAccountService.createMovieUser(userAccountRequestDto);
+        assertThat(myUserAccount).isNotNull();
+        assertThat(accounts).size().isEqualTo(7);
+
+
+
+    }
+
+    @Test
+    @DisplayName("Test to find a user by Id")
+    void findUserByIdTest(){
+        UserAccount userAccount = userAccountRepository.findById(2L).orElse(null);
+        assertThat(userAccount.getId()).isEqualTo(2L);
     }
 }
